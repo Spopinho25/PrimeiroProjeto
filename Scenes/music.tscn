@@ -6,4 +6,8 @@
 position = Vector2(-1, 0)
 stream = ExtResource("1_1gotu")
 autoplay = true
+max_distance = 10000.0
+attenuation = 0.00680116
+panning_strength = 0.0
 bus = &"Musica"
+parameters/looping = true

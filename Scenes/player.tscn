@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bhjji6lr3idip"]
+[gd_scene load_steps=29 format=3 uid="uid://bhjji6lr3idip"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_j4475"]
 [ext_resource type="Texture2D" uid="uid://drvossjr6xerl" path="res://Assets/sprites/knight.png" id="1_r7ckj"]
@@ -87,6 +87,18 @@ region = Rect2(64, 0, 32, 32)
 atlas = ExtResource("1_r7ckj")
 region = Rect2(96, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_q45jl"]
+atlas = ExtResource("1_r7ckj")
+region = Rect2(32, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttyle"]
+atlas = ExtResource("1_r7ckj")
+region = Rect2(64, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hx2yi"]
+atlas = ExtResource("1_r7ckj")
+region = Rect2(96, 224, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ry03h"]
 animations = [{
 "frames": [{
@@ -150,6 +162,11 @@ animations = [{
 "name": &"Pular",
 "speed": 5.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_oegi0")
@@ -166,6 +183,20 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q45jl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttyle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hx2yi")
+}],
+"loop": false,
+"name": &"morrer",
+"speed": 2.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a7x1b"]
@@ -173,15 +204,20 @@ radius = 5.09902
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
+position = Vector2(1, 1)
 collision_layer = 2
 script = ExtResource("1_j4475")
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, -12)
 sprite_frames = SubResource("SpriteFrames_ry03h")
-animation = &"Pular"
+animation = &"Correr"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, -6)
 shape = SubResource("CircleShape2D_a7x1b")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(8, -6)

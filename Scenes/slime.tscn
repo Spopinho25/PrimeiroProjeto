@@ -52,10 +52,11 @@ autoplay = "default"
 frame = 3
 frame_progress = 0.730549
 
-[node name="killzone" parent="AnimatedSprite2D" instance=ExtResource("2_8vr2o")]
+[node name="killzone" parent="." instance=ExtResource("2_8vr2o")]
+position = Vector2(37, 5)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/killzone"]
-position = Vector2(0, 5)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="killzone"]
+position = Vector2(-37, 0)
 shape = SubResource("RectangleShape2D_svg2t")
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
