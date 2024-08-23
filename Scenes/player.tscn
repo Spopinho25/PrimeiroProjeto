@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bhjji6lr3idip"]
+[gd_scene load_steps=30 format=3 uid="uid://bhjji6lr3idip"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_j4475"]
 [ext_resource type="Texture2D" uid="uid://drvossjr6xerl" path="res://Assets/sprites/knight.png" id="1_r7ckj"]
@@ -202,18 +202,23 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_a7x1b"]
 radius = 5.09902
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvaw5"]
+size = Vector2(12, 15)
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
 position = Vector2(1, 1)
 collision_layer = 2
+collision_mask = 23
 script = ExtResource("1_j4475")
-metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, -12)
 sprite_frames = SubResource("SpriteFrames_ry03h")
 animation = &"Correr"
 autoplay = "idle"
+frame = 11
+frame_progress = 0.97876
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, -6)
@@ -221,3 +226,13 @@ shape = SubResource("CircleShape2D_a7x1b")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(8, -6)
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="Collision" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-2, -7.5)
+shape = SubResource("RectangleShape2D_cvaw5")
+debug_color = Color(0.861685, 1.44392e-06, 0.444223, 0.42)
+metadata/_edit_group_ = true
