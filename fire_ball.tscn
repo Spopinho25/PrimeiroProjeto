@@ -51,23 +51,25 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j56c0"]
-radius = 163.168
+radius = 10.0499
 
-[node name="FireBall" type="Area2D"]
-scale = Vector2(0.1, 0.1)
+[node name="FireBall" type="Node2D"]
 script = ExtResource("1_ucpjb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.03, 0.03)
 sprite_frames = SubResource("SpriteFrames_ph2s5")
 animation = &"FireBall"
 frame_progress = 0.263211
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(0.3, 0.3)
-shape = SubResource("CircleShape2D_j56c0")
-
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_j56c0")
+
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

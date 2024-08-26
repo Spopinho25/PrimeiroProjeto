@@ -3,7 +3,7 @@ extends Node2D
 const SPEED = 60
 
 var direction = 1
-var health: int = 100
+var health: int = 50
 
 @onready var ray_cast_right = $RayCastRight
 @onready var ray_cast_left = $RayCastLeft
@@ -14,6 +14,7 @@ func die():
 
 
 func take_damage(damage_amount: int):
+	print("Ouch!!")
 	health -= damage_amount
 	if health <= 0:
 		die()

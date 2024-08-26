@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ddjw4xbo31m07" path="res://Assets/sprites/slime_green.png" id="1_p5hdf"]
 [ext_resource type="Script" path="res://Assets/sprites/slime.gd" id="1_ykouk"]
 [ext_resource type="PackedScene" uid="uid://b5klu0ujfdxhs" path="res://Scenes/killzone.tscn" id="2_8vr2o"]
-[ext_resource type="PackedScene" uid="uid://bs210up1pqbbr" path="res://Scenes/hitbox.tscn" id="4_lqvpk"]
+[ext_resource type="Script" path="res://Scripts/hitbox.gd" id="4_hsvuc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s0ird"]
 atlas = ExtResource("1_p5hdf")
@@ -45,9 +45,9 @@ animations = [{
 size = Vector2(14, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p8ppd"]
-size = Vector2(14, 12)
+size = Vector2(16, 14)
 
-[node name="Slime" type="Node2D"]
+[node name="Slime" type="Node2D" groups=["enemies"]]
 script = ExtResource("1_ykouk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -56,8 +56,9 @@ autoplay = "default"
 frame = 3
 frame_progress = 0.730549
 
-[node name="killzone" parent="." instance=ExtResource("2_8vr2o")]
+[node name="killzone" parent="." groups=["enemies"] instance=ExtResource("2_8vr2o")]
 position = Vector2(37, 5)
+collision_layer = 4
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="killzone"]
 position = Vector2(-37, 0)
@@ -71,8 +72,13 @@ target_position = Vector2(12, 0)
 position = Vector2(0, 5)
 target_position = Vector2(-12, 0)
 
-[node name="hitbox" parent="." instance=ExtResource("4_lqvpk")]
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 16
+script = ExtResource("4_hsvuc")
 
-[node name="Collision2" type="CollisionShape2D" parent="hitbox" groups=["enemies"]]
+[node name="Collision2" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_p8ppd")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
