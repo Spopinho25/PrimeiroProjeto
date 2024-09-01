@@ -1,7 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://bbhe27ipt8fg"]
+[gd_scene load_steps=14 format=3 uid="uid://dbf55uxbn5v2e"]
 
 [ext_resource type="Texture2D" uid="uid://b7u0u5f3p776v" path="res://Assets/sprites/FireBall/FB500-1.png" id="1_fxl75"]
-[ext_resource type="Script" path="res://fire_ball.gd" id="1_ucpjb"]
+[ext_resource type="Script" path="res://Scripts/fire_ball.gd" id="1_ucpjb"]
 [ext_resource type="Texture2D" uid="uid://5m20knf6hqjq" path="res://Assets/sprites/FireBall/FB500-2.png" id="2_yske3"]
 [ext_resource type="Texture2D" uid="uid://dukeoon3k37u" path="res://Assets/sprites/FireBall/FB500-3.png" id="3_jn4b8"]
 [ext_resource type="Texture2D" uid="uid://dva7movl3ru4p" path="res://Assets/sprites/FireBall/FB500-4.png" id="4_1176a"]
@@ -51,22 +51,25 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j56c0"]
-radius = 163.168
+radius = 5.0
 
-[node name="FireBall" type="Area2D"]
-scale = Vector2(0.1, 0.1)
+[node name="FireBall" type="Node2D"]
 script = ExtResource("1_ucpjb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.03, 0.03)
 sprite_frames = SubResource("SpriteFrames_ph2s5")
 animation = &"FireBall"
 frame_progress = 0.263211
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(0.3, 0.3)
-shape = SubResource("CircleShape2D_j56c0")
-
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_j56c0")
+
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

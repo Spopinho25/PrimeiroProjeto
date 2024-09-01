@@ -5,7 +5,7 @@ var died = false
 const SPEED = 130.0
 const JUMP_VELOCITY = -270.0
 
-const FIREBALL = preload("res://fire_ball.tscn")
+const FIREBALL = preload("res://Scenes/fire_ball.tscn")
 @onready var marker_position = $Marker2D.position
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.

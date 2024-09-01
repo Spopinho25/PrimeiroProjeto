@@ -1,9 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://e2dqfb06h0jq"]
+[gd_scene load_steps=13 format=3 uid="uid://e2dqfb06h0jq"]
 
 [ext_resource type="Texture2D" uid="uid://ddjw4xbo31m07" path="res://Assets/sprites/slime_green.png" id="1_p5hdf"]
-[ext_resource type="Script" path="res://Assets/sprites/slime.gd" id="1_ykouk"]
+[ext_resource type="Script" path="res://Scripts/slime.gd" id="1_ykouk"]
 [ext_resource type="PackedScene" uid="uid://b5klu0ujfdxhs" path="res://Scenes/killzone.tscn" id="2_8vr2o"]
 [ext_resource type="Script" path="res://Scripts/hitbox.gd" id="4_hsvuc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3i0oj"]
+size = Vector2(14, 13)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s0ird"]
 atlas = ExtResource("1_p5hdf")
@@ -47,8 +50,14 @@ size = Vector2(14, 12)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p8ppd"]
 size = Vector2(16, 14)
 
-[node name="Slime" type="Node2D" groups=["enemies"]]
+[node name="Slime" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_ykouk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_3i0oj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_o07x3")
@@ -72,7 +81,7 @@ target_position = Vector2(12, 0)
 position = Vector2(0, 5)
 target_position = Vector2(-12, 0)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["enemies"]]
 collision_layer = 4
 collision_mask = 16
 script = ExtResource("4_hsvuc")
@@ -80,5 +89,3 @@ script = ExtResource("4_hsvuc")
 [node name="Collision2" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_p8ppd")
-
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

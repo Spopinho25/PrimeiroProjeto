@@ -1,4 +1,4 @@
 extends Area2D
 
-func _on_body_entered(body: Node2D) -> void:
-	print("colidiu")
+func take_damage(damage):
+	get_parent().take_damage(damage)

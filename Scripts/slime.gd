@@ -14,7 +14,6 @@ func die():
 
 
 func take_damage(damage_amount: int):
-	print("Ouch!!")
 	health -= damage_amount
 	if health <= 0:
 		die()
