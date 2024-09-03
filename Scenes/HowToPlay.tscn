@@ -1,0 +1,125 @@
+[gd_scene load_steps=5 format=3 uid="uid://rx0bu8gal0db"]
+
+[ext_resource type="Script" path="res://HowToPlay.gd" id="1_5kufa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1tn7"]
+bg_color = Color(0, 0.713726, 0.419608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a7bm5"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j7crg"]
+font_size = 17
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5kufa")
+
+[node name="BackGround" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h1tn7")
+
+[node name="title" type="Node" parent="."]
+
+[node name="Panel2" type="Panel" parent="title"]
+offset_left = 497.0
+offset_top = 172.0
+offset_right = 649.0
+offset_bottom = 254.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_a7bm5")
+
+[node name="Label" type="Label" parent="title"]
+offset_left = 501.0
+offset_top = 174.0
+offset_right = 647.0
+offset_bottom = 252.0
+text = "Objective: Collect
+all 27 coins
+How To Play:
+"
+label_settings = SubResource("LabelSettings_j7crg")
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 32
+
+[node name="H2P2" type="Node" parent="."]
+
+[node name="Panel3" type="Panel" parent="H2P2"]
+offset_left = 392.0
+offset_top = 275.0
+offset_right = 544.0
+offset_bottom = 357.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_a7bm5")
+
+[node name="Label2" type="Label" parent="H2P2"]
+offset_left = 404.0
+offset_top = 252.0
+offset_right = 537.0
+offset_bottom = 353.0
+text = "
+wasd - Moviment
+Space - Jump 
+LMB - Fireball"
+
+[node name="H2P3" type="Node" parent="."]
+
+[node name="Panel4" type="Panel" parent="H2P3"]
+offset_left = 597.0
+offset_top = 272.0
+offset_right = 850.0
+offset_bottom = 356.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_a7bm5")
+
+[node name="Label" type="Label" parent="H2P3"]
+offset_left = 604.0
+offset_top = 252.0
+offset_right = 847.0
+offset_bottom = 353.0
+text = "
+up, down, left, right - Moviment
+Z - Jump 
+x - Fireball"
+
+[node name="OR" type="Node" parent="."]
+
+[node name="Panel5" type="Panel" parent="OR"]
+offset_left = 557.0
+offset_top = 305.0
+offset_right = 584.0
+offset_bottom = 330.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_a7bm5")
+
+[node name="Label3" type="Label" parent="OR"]
+offset_left = 559.0
+offset_top = 305.0
+offset_right = 582.0
+offset_bottom = 328.0
+text = "OR"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_left = 550.0
+offset_top = 369.0
+offset_right = 595.0
+offset_bottom = 409.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 325)
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

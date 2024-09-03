@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://mt1h151buk6k"]
+[gd_scene load_steps=17 format=3 uid="uid://b5ly4fp3cpo2s"]
 
 [ext_resource type="PackedScene" uid="uid://bhjji6lr3idip" path="res://Scenes/player.tscn" id="1_53jgl"]
 [ext_resource type="Script" path="res://Scripts/Game_manager.gd" id="1_f62dk"]
@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://e2dqfb06h0jq" path="res://Scenes/slime.tscn" id="6_o7qa1"]
 [ext_resource type="FontFile" uid="uid://blcaxmbu2bu2d" path="res://Assets/fonts/PixelOperator8.ttf" id="8_6k6u8"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ih18s"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_66t3b"]
 texture = ExtResource("2_vvaqy")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -180,7 +180,7 @@ texture = ExtResource("2_vvaqy")
 
 [sub_resource type="TileSet" id="TileSet_l8e14"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_ih18s")
+sources/0 = SubResource("TileSetAtlasSource_66t3b")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_r3y77"]
 distance = -28.0
