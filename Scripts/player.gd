@@ -4,6 +4,7 @@ var died = false
 
 const SPEED = 130.0
 const JUMP_VELOCITY = -270.0
+var deathPosition = Vector2(0,20)
 
 const FIREBALL = preload("res://Scenes/fire_ball.tscn")
 @onready var marker_position = $Marker2D.position
@@ -79,5 +80,9 @@ func _physics_process(delta):
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		
+	if position.y > 500:
+		position = deathPosition
+
 
 	move_and_slide()

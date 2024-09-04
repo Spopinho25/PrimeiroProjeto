@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://rx0bu8gal0db"]
 
-[ext_resource type="Script" path="res://HowToPlay.gd" id="1_5kufa"]
+[ext_resource type="Script" path="res://Scripts/HowToPlay.gd" id="1_5kufa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1tn7"]
 bg_color = Color(0, 0.713726, 0.419608, 1)
@@ -107,6 +107,7 @@ offset_bottom = 328.0
 text = "OR"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
 offset_left = 550.0
 offset_top = 369.0
 offset_right = 595.0

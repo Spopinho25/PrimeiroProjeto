@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b5ly4fp3cpo2s"]
+[gd_scene load_steps=18 format=3 uid="uid://b5ly4fp3cpo2s"]
 
 [ext_resource type="PackedScene" uid="uid://bhjji6lr3idip" path="res://Scenes/player.tscn" id="1_53jgl"]
 [ext_resource type="Script" path="res://Scripts/Game_manager.gd" id="1_f62dk"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dsnu1henwdf1l" path="res://Assets/sprites/world_tileset.png" id="2_vvaqy"]
 [ext_resource type="PackedScene" uid="uid://brqh64rga2504" path="res://Scenes/plataformaVerde.tscn" id="3_ogo0b"]
 [ext_resource type="PackedScene" uid="uid://ddjunj4upl24u" path="res://Scenes/coin.tscn" id="4_ec7oo"]
+[ext_resource type="PackedScene" uid="uid://dpdry4wgpp8r1" path="res://Scenes/flag.tscn" id="4_iwyhq"]
 [ext_resource type="PackedScene" uid="uid://b5klu0ujfdxhs" path="res://Scenes/killzone.tscn" id="5_bd7j4"]
 [ext_resource type="PackedScene" uid="uid://1plvj5f27yl8" path="res://Scenes/plataforma_amarela.tscn" id="5_cpopt"]
 [ext_resource type="PackedScene" uid="uid://e2dqfb06h0jq" path="res://Scenes/slime.tscn" id="6_o7qa1"]
@@ -452,3 +453,8 @@ position = Vector2(42, -140)
 
 [node name="Slime18" parent="Slimes" instance=ExtResource("6_o7qa1")]
 position = Vector2(107, -139)
+
+[node name="Flags" type="Node" parent="."]
+
+[node name="Flag" parent="Flags" instance=ExtResource("4_iwyhq")]
+position = Vector2(61, -30)
