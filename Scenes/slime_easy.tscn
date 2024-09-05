@@ -1,0 +1,91 @@
+[gd_scene load_steps=13 format=3 uid="uid://bb35vfv12rnx6"]
+
+[ext_resource type="Script" path="res://Scripts/slime_easy.gd" id="1_e6vqy"]
+[ext_resource type="Texture2D" uid="uid://ddjw4xbo31m07" path="res://Assets/sprites/slime_green.png" id="2_mc5r8"]
+[ext_resource type="PackedScene" uid="uid://b5klu0ujfdxhs" path="res://Scenes/killzone.tscn" id="3_emf6v"]
+[ext_resource type="Script" path="res://Scripts/hitbox.gd" id="4_qdylb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3i0oj"]
+size = Vector2(14, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0ird"]
+atlas = ExtResource("2_mc5r8")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwcm3"]
+atlas = ExtResource("2_mc5r8")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqy55"]
+atlas = ExtResource("2_mc5r8")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0bjo"]
+atlas = ExtResource("2_mc5r8")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o07x3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0ird")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwcm3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqy55")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0bjo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_svg2t"]
+size = Vector2(14, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p8ppd"]
+size = Vector2(16, 14)
+
+[node name="SlimeEasy" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_e6vqy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_3i0oj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_o07x3")
+autoplay = "default"
+frame = 3
+frame_progress = 0.730549
+
+[node name="killzone" parent="." groups=["enemies"] instance=ExtResource("3_emf6v")]
+position = Vector2(37, 5)
+collision_layer = 4
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="killzone"]
+position = Vector2(-37, 0)
+shape = SubResource("RectangleShape2D_svg2t")
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0, 5)
+target_position = Vector2(12, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, 5)
+target_position = Vector2(-12, 0)
+
+[node name="Area2D" type="Area2D" parent="." groups=["enemies"]]
+collision_layer = 4
+collision_mask = 16
+script = ExtResource("4_qdylb")
+
+[node name="Collision2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_p8ppd")
