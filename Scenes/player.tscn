@@ -236,3 +236,5 @@ position = Vector2(-2, -7.5)
 shape = SubResource("RectangleShape2D_cvaw5")
 debug_color = Color(0.861685, 1.44392e-06, 0.444223, 0.42)
 metadata/_edit_group_ = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="OnDiedAnimationFinished"]

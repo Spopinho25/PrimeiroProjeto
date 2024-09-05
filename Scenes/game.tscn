@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ck22hfkreifri"]
+[gd_scene load_steps=18 format=3 uid="uid://b5ly4fp3cpo2s"]
 
 [ext_resource type="PackedScene" uid="uid://bhjji6lr3idip" path="res://Scenes/player.tscn" id="1_53jgl"]
 [ext_resource type="Script" path="res://Scripts/Game_manager.gd" id="1_f62dk"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://1plvj5f27yl8" path="res://Scenes/plataforma_amarela.tscn" id="5_cpopt"]
 [ext_resource type="PackedScene" uid="uid://e2dqfb06h0jq" path="res://Scenes/slime.tscn" id="6_o7qa1"]
 [ext_resource type="FontFile" uid="uid://blcaxmbu2bu2d" path="res://Assets/fonts/PixelOperator8.ttf" id="8_6k6u8"]
+[ext_resource type="PackedScene" uid="uid://dpdry4wgpp8r1" path="res://Scenes/flag.tscn" id="11_3sa5c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ih18s"]
 texture = ExtResource("2_vvaqy")
@@ -452,3 +453,14 @@ position = Vector2(42, -140)
 
 [node name="Slime18" parent="Slimes" instance=ExtResource("6_o7qa1")]
 position = Vector2(107, -139)
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Flag" parent="Node" instance=ExtResource("11_3sa5c")]
+position = Vector2(121, -58)
+
+[node name="Flag2" parent="Node" instance=ExtResource("11_3sa5c")]
+position = Vector2(480, -9)
+
+[node name="Flag3" parent="Node" instance=ExtResource("11_3sa5c")]
+position = Vector2(819, -41)

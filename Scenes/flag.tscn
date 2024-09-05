@@ -4,6 +4,9 @@
 [ext_resource type="Script" path="res://Scripts/flag.gd" id="1_qpr10"]
 [ext_resource type="Texture2D" uid="uid://ehlhfu6pugb0" path="res://Assets/sprites/Flag/tile_0112.png" id="2_bspjp"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ej3b"]
+size = Vector2(18, 20)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_mv3rx"]
 atlas = ExtResource("1_blshl")
 region = Rect2(0, 0, 18, 18)
@@ -26,18 +29,16 @@ animations = [{
 "speed": 2.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ej3b"]
-size = Vector2(18, 20)
-
 [node name="Flag" type="Area2D"]
+collision_mask = 2
 script = ExtResource("1_qpr10")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8ej3b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ay0a0")
 autoplay = "default"
 frame_progress = 0.249192
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_8ej3b")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

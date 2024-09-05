@@ -86,3 +86,10 @@ func _physics_process(delta):
 
 
 	move_and_slide()
+
+
+func OnDiedAnimationFinished() -> void:
+	if animated_sprite.animation == "morrer":
+		position = deathPosition
+		died = false
+		animated_sprite.play("idle")
